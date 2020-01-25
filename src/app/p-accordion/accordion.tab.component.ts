@@ -12,28 +12,8 @@ let idx = 0;
 
 @Component({
   selector: 'e-accordionTab',
-  template: `
-      <div class="ui-accordion-header ui-state-default ui-corner-all" [ngClass]="{'ui-state-active': selected,'ui-state-disabled':disabled}">
-          <a [attr.tabindex]="disabled ? -1 : 0" [attr.id]="id" [attr.aria-controls]="id + '-content'" role="tab" [attr.aria-expanded]="selected" (click)="toggle($event)"
-              (keydown)="onKeydown($event)">
-              <span class="ui-accordion-toggle-icon" [ngClass]="selected ? accordion.collapseIcon : accordion.expandIcon"></span>
-              <span class="ui-accordion-header-text" *ngIf="!hasHeaderFacet">
-                  {{header}}
-              </span>
-              <ng-content select="e-header" *ngIf="hasHeaderFacet"></ng-content>
-          </a>
-      </div>
-      <div [attr.id]="id + '-content'" class="ui-accordion-content-wrapper" [@tabContent]="selected ? {value: 'visible', params: {transitionParams: animating ? transitionOptions : '0ms', height: '*'}} : {value: 'hidden', params: {transitionParams: transitionOptions, height: '0'}}" (@tabContent.done)="onToggleDone($event)"
-          [ngClass]="{'ui-accordion-content-wrapper-overflown': !selected||animating}"
-          role="region" [attr.aria-hidden]="!selected" [attr.aria-labelledby]="id">
-          <div class="ui-accordion-content ui-widget-content">
-              <ng-content></ng-content>
-              <ng-container *ngIf="contentTemplate && (cache ? loaded : selected)">
-                  <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-              </ng-container>
-          </div>
-      </div>
-  `,
+  templateUrl: './accordion.tab.component.html',
+  styleUrls: ['./accordion.tab.component.css'],
   animations: [
     trigger('tabContent', [
       state('hidden', style({
@@ -55,21 +35,16 @@ let idx = 0;
 export class EAccordionTabComponent implements OnDestroy, AfterContentInit {
 
   @Input() header: string;
-
   @Input() selected: boolean;
-
   @Input() disabled: boolean;
-
-  @Input() cache: boolean = true;
-
+  @Input() cache = true;
   @Output() selectedChange: EventEmitter<any> = new EventEmitter();
-
-  @Input() transitionOptions: string = '400ms cubic-bezier(0.86, 0, 0.07, 1)';
+  @Input() transitionOptions = '400ms cubic-bezier(0.86, 0, 0.07, 1)';
 
   @ContentChildren(EHeaderComponent) headerFacet: QueryList<EHeaderComponent>;
-
   @ContentChildren(PrimeTemplateDirective) templates: QueryList<any>;
 
+  // tslint:disable-next-line: variable-name
   private _animating: boolean;
 
   get animating(): boolean {
@@ -115,22 +90,22 @@ export class EAccordionTabComponent implements OnDestroy, AfterContentInit {
     }
 
     this.animating = true;
-    let index = this.findTabIndex();
+    const index = this.findTabIndex();
 
     if (this.selected) {
       this.selected = false;
-      this.accordion.onClose.emit({ originalEvent: event, index: index });
+      this.accordion.onClose.emit({ originalEvent: event, index });
     } else {
       if (!this.accordion.multiple) {
-        for (var i = 0; i < this.accordion.tabs.length; i++) {
-          this.accordion.tabs[i].selected = false;
-          this.accordion.tabs[i].selectedChange.emit(false);
+        for (const aTab of this.accordion.tabs) {
+          aTab.selected = false;
+          aTab.selectedChange.emit(false);
         }
       }
 
       this.selected = true;
       this.loaded = true;
-      this.accordion.onOpen.emit({ originalEvent: event, index: index });
+      this.accordion.onOpen.emit({ originalEvent: event, index });
     }
 
     this.selectedChange.emit(this.selected);
@@ -140,8 +115,8 @@ export class EAccordionTabComponent implements OnDestroy, AfterContentInit {
 
   findTabIndex() {
     let index = -1;
-    for (var i = 0; i < this.accordion.tabs.length; i++) {
-      if (this.accordion.tabs[i] == this) {
+    for (let i = 0; i < this.accordion.tabs.length; i++) {
+      if (this.accordion.tabs[i] === this) {
         index = i;
         break;
       }
@@ -155,13 +130,6 @@ export class EAccordionTabComponent implements OnDestroy, AfterContentInit {
 
   onToggleDone(event: Event) {
     this.animating = false;
-  }
-
-  onKeydown(event: KeyboardEvent) {
-    if (event.which === 32 || event.which === 13) {
-      this.toggle(event);
-      event.preventDefault();
-    }
   }
 
   ngOnDestroy() {

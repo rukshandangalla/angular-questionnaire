@@ -8,34 +8,27 @@ import { EAccordionTabComponent } from './accordion.tab.component';
 
 @Component({
   selector: 'e-accordion',
-  template: `
-      <div [ngClass]="'ui-accordion ui-widget ui-helper-reset'" [ngStyle]="style" [class]="styleClass" role="tablist">
-          <ng-content></ng-content>
-      </div>
-  `
+  templateUrl: './accordion.component.html',
+  styleUrls: ['./accordion.component.css']
 })
 export class EAccordionComponent implements BlockableUI, AfterContentInit, OnDestroy {
 
   @Input() multiple: boolean;
-
   // tslint:disable-next-line: no-output-on-prefix
   @Output() onClose: EventEmitter<any> = new EventEmitter();
-
   // tslint:disable-next-line: no-output-on-prefix
   @Output() onOpen: EventEmitter<any> = new EventEmitter();
 
   @Input() style: any;
-
   @Input() styleClass: string;
-
   @Input() expandIcon = 'pi pi-fw pi-chevron-right';
-
   @Input() collapseIcon = 'pi pi-fw pi-chevron-down';
 
   @ContentChildren(EAccordionTabComponent) tabList: QueryList<EAccordionTabComponent>;
 
   tabListSubscription: Subscription;
 
+  // tslint:disable-next-line: variable-name
   private _activeIndex: any;
 
   public tabs: EAccordionTabComponent[] = [];

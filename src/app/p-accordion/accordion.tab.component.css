@@ -1,0 +1,45 @@
+.e-ui-accordion-header {
+  cursor: pointer;
+  position: relative;
+  margin-top: 10px;
+  zoom: 1;
+}
+
+.e-ui-accordion .e-ui-accordion-header a {
+  display: block;
+  padding: .5em;
+}
+
+.e-ui-accordion .e-ui-accordion-toggle-icon,
+.e-ui-accordion .e-ui-accordion-header-text {
+  vertical-align: middle;
+}
+
+.e-ui-accordion .e-ui-accordion-content {
+  padding: 1em;
+  border-top: 0;
+  overflow: visible;
+  zoom: 1;
+}
+
+.e-ui-accordion .e-ui-accordion-header.ui-state-disabled,
+.e-ui-accordion .e-ui-accordion-header.ui-state-disabled a {
+  cursor: default;
+}
+
+.e-ui-accordion-content-wrapper-overflown {
+  overflow: hidden;
+}
+
+.ui-rtl .e-ui-accordion .e-ui-accordion-header a {
+  padding: .5em 2em .5em .5em;
+}
+
+.ui-rtl .e-ui-accordion .e-ui-accordion-toggle-icon {
+  left: initial;
+  right: .5em;
+}
+
+.ui-rtl .e-ui-accordion .e-ui-accordion-toggle-icon.pi-caret-right:before {
+  content: '\e904';
+}

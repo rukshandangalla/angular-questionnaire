@@ -1,0 +1,20 @@
+<div class="mypanel">
+  <div class="title" (click)="toggle.emit()">
+    <div class="ui-g">
+      <div class="ui-g-1">
+        <div class="icon">
+          <i *ngIf="!opened" class="fa fa-chevron-right"></i>
+          <i *ngIf="opened" class="fa fa-chevron-down"></i>
+        </div>
+      </div>
+      <div class="ui-g-11">
+        <div class="header">
+          {{title}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body" [ngClass]="{'hidden': !opened}">
+    <ng-content></ng-content>
+  </div>
+</div>

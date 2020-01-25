@@ -21,8 +21,8 @@ export class EAccordionComponent implements BlockableUI, AfterContentInit, OnDes
 
   @Input() style: any;
   @Input() styleClass: string;
-  @Input() expandIcon = 'pi pi-fw pi-chevron-right';
-  @Input() collapseIcon = 'pi pi-fw pi-chevron-down';
+  @Input() expandIcon = 'fa fa-plus';
+  @Input() collapseIcon = 'fa fa-minus';
 
   @ContentChildren(EAccordionTabComponent) tabList: QueryList<EAccordionTabComponent>;
 

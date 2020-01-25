@@ -1,20 +1,22 @@
-<div class="e-ui-accordion-header ui-state-default ui-corner-all"
+<div class="e-ui-accordion-header ui-state-default"
   [ngClass]="{'ui-state-active': selected,'ui-state-disabled':disabled}">
-  <a [attr.tabindex]="disabled ? -1 : 0" [attr.id]="id" [attr.aria-controls]="id + '-content'" role="tab"
-    [attr.aria-expanded]="selected">
+  <div [attr.tabindex]="disabled ? -1 : 0" [attr.id]="id" [attr.aria-controls]="id + '-content'" role="tab"
+    [attr.aria-expanded]="selected" (click)="toggle($event)">
     <div class="p-grid p-nogutter">
       <div class="p-col-fixed p-nogutter" style="width:30px">
-        <span class="ui-accordion-toggle-icon" [ngClass]="selected ? accordion.collapseIcon : accordion.expandIcon"
-          (click)="toggle($event)"></span>
+        <span class="ui-accordion-toggle-icon" [ngClass]="selected ? accordion.collapseIcon : accordion.expandIcon"></span>
+        <!-- <div class="e-ui-accordion-tabindex">
+          {{ tabIndex }}
+        </div> -->
       </div>
-      <div class="p-col p-nogutter">
+      <div class="p-col p-nogutter e-ui-accordion-header-content">
         <span class="ui-accordion-header-text" *ngIf="!hasHeaderFacet">
           {{header}}
         </span>
         <ng-content select="e-header" *ngIf="hasHeaderFacet"></ng-content>
       </div>
     </div>
-  </a>
+  </div>
 </div>
 <div [attr.id]="id + '-content'" class="ui-accordion-content-wrapper"
   [@tabContent]="selected ? {value: 'visible', params: {transitionParams: animating ? transitionOptions : '0ms', height: '*'}} : {value: 'hidden', params: {transitionParams: transitionOptions, height: '0'}}"

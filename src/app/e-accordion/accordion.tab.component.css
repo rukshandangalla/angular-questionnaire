@@ -5,9 +5,24 @@
   zoom: 1;
 }
 
+.e-ui-accordion-header-content {
+  border-bottom: 1px solid #dadada;
+  padding-bottom: 10px;
+}
+
+.e-ui-accordion-tabindex {
+  color: #808080;
+  border: 1px solid #dadada;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
 .e-ui-accordion .e-ui-accordion-header a {
   display: block;
-  padding: .5em;
+  padding: 0.5em;
 }
 
 .e-ui-accordion .e-ui-accordion-toggle-icon,
@@ -32,14 +47,14 @@
 }
 
 .ui-rtl .e-ui-accordion .e-ui-accordion-header a {
-  padding: .5em 2em .5em .5em;
+  padding: 0.5em 2em 0.5em 0.5em;
 }
 
 .ui-rtl .e-ui-accordion .e-ui-accordion-toggle-icon {
   left: initial;
-  right: .5em;
+  right: 0.5em;
 }
 
 .ui-rtl .e-ui-accordion .e-ui-accordion-toggle-icon.pi-caret-right:before {
-  content: '\e904';
+  content: "\e904";
 }

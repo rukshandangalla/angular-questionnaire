@@ -47,9 +47,16 @@ export class EAccordionTabComponent implements OnDestroy, AfterContentInit {
   // tslint:disable-next-line: variable-name
   private _animating: boolean;
 
+  contentTemplate: TemplateRef<any>;
+  id = `ui-accordiontab-${idx++}`;
+  tabIndex = idx;
+  loaded: boolean;
+  accordion: EAccordionComponent;
+
   get animating(): boolean {
     return this._animating;
   }
+
   set animating(val: boolean) {
     this._animating = val;
 
@@ -57,14 +64,6 @@ export class EAccordionTabComponent implements OnDestroy, AfterContentInit {
       this.changeDetector.detectChanges();
     }
   }
-
-  contentTemplate: TemplateRef<any>;
-
-  id = `ui-accordiontab-${idx++}`;
-
-  loaded: boolean;
-
-  accordion: EAccordionComponent;
 
   constructor(@Inject(forwardRef(() => EAccordionComponent)) accordion, public changeDetector: ChangeDetectorRef) {
     this.accordion = accordion as EAccordionComponent;

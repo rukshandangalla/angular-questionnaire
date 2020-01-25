@@ -8,23 +8,19 @@ import { AppComponent } from './app.component';
 
 import { PrimeNgModule } from './prime-ng.module';
 
-import { EAccordionComponent } from './e-accordion/accordion.component';
-import { EAccordionTabComponent } from './e-accordion/accordion.tab.component';
-import { EHeaderComponent } from './e-accordion/header.component';
+import { EAccordionModule } from './e-accordion/accordion.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    EAccordionTabComponent,
-    EAccordionComponent,
-    EHeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    PrimeNgModule
+    PrimeNgModule,
+    EAccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

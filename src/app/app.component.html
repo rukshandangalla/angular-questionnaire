@@ -29,23 +29,9 @@
       </p-accordionTab>
     </p-accordion>
   </div>
-</div>
-
-<div class="ui-g">
-  <div class="ui-g-12">
-    <accordion>
-      <group title="First Group">
-        this is the content
-      </group>
-      <group title="Second Group">
-        <input type="text" class="form-control" />
-        <button>Send</button>
-      </group>
-    </accordion>
-  </div>
 </div> -->
 
-<div class="ui-g">
+<!-- <div class="ui-g">
   <div class="ui-g-12">
     <e-accordion>
       <e-accordionTab>
@@ -88,7 +74,8 @@
       <e-accordionTab>
         <e-header>
           <div class="p-grid p-nogutter">
-            <div class="p-col-9 p-nogutter">Is place of incorporation outside Sri Lanka and principal place of business in SL?</div>
+            <div class="p-col-9 p-nogutter">Is place of incorporation outside Sri Lanka and principal place of business
+              in SL?</div>
             <div class="p-col p-nogutter">
               <div class="p-grid p-nogutter">
                 <div class="p-col-6 p-nogutter">
@@ -105,6 +92,39 @@
           </div>
         </e-header>
         23
+      </e-accordionTab>
+    </e-accordion>
+  </div>
+</div> -->
+
+<div class="ui-g">
+  <div class="ui-g-12">
+    <e-accordion>
+      <e-accordionTab *ngFor="let question of questionList" [attachmentList]="question.attachmentList">
+        <e-header>
+          <div class="p-grid p-nogutter">
+            <div class="p-col-9 p-nogutter">{{ question.question_text }}</div>
+            <div class="p-col p-nogutter">
+              <div class="p-grid p-nogutter">
+                <div class="p-col-6 p-nogutter">
+                  <p-radioButton [name]="'q_group_'+question.id" value="val1" label="Yes"></p-radioButton>
+                </div>
+                <div class="p-col-6 p-nogutter">
+                  <p-radioButton [name]="'q_group_'+question.id" value="val2" label="No"></p-radioButton>
+                </div>
+              </div>
+            </div>
+            <div class="p-col-fixed p-nogutter p-justify-end" style="width:30px">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </e-header>
+        <!-- <div class="p-grid">
+          <div class="p-col">
+            <p-fileUpload name="myfile[]" url="./upload.php"></p-fileUpload>
+          </div>
+          <div class="p-col"></div>
+        </div> -->
       </e-accordionTab>
     </e-accordion>
   </div>

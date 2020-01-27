@@ -30,8 +30,8 @@
   vertical-align: middle;
 }
 
-.e-ui-accordion .e-ui-accordion-content {
-  padding: 1em;
+.e-ui-accordion-content {
+  padding: 2em;
   border-top: 0;
   overflow: visible;
   zoom: 1;

@@ -1,10 +1,11 @@
 <div class="e-ui-accordion-header ui-state-default"
   [ngClass]="{'ui-state-active': selected,'ui-state-disabled':disabled}">
   <div [attr.tabindex]="disabled ? -1 : 0" [attr.id]="id" [attr.aria-controls]="id + '-content'" role="tab"
-    [attr.aria-expanded]="selected" (click)="toggle($event)">
+    [attr.aria-expanded]="selected">
     <div class="p-grid p-nogutter">
-      <div class="p-col-fixed p-nogutter" style="width:30px">
-        <span class="ui-accordion-toggle-icon" [ngClass]="selected ? accordion.collapseIcon : accordion.expandIcon"></span>
+      <div class="p-col-fixed p-nogutter" style="width:30px" (click)="toggle($event)">
+        <span class="ui-accordion-toggle-icon"
+          [ngClass]="selected ? accordion.collapseIcon : accordion.expandIcon"></span>
         <!-- <div class="e-ui-accordion-tabindex">
           {{ tabIndex }}
         </div> -->
@@ -18,14 +19,19 @@
     </div>
   </div>
 </div>
-<div [attr.id]="id + '-content'" class="ui-accordion-content-wrapper"
+<div [attr.id]="id + '-content'" class="e-ui-accordion-content-wrapper"
   [@tabContent]="selected ? {value: 'visible', params: {transitionParams: animating ? transitionOptions : '0ms', height: '*'}} : {value: 'hidden', params: {transitionParams: transitionOptions, height: '0'}}"
   (@tabContent.done)="onToggleDone($event)" [ngClass]="{'ui-accordion-content-wrapper-overflown': !selected||animating}"
   role="region" [attr.aria-hidden]="!selected" [attr.aria-labelledby]="id">
-  <div class="ui-accordion-content ui-widget-content">
-    <ng-content></ng-content>
-    <ng-container *ngIf="contentTemplate && (cache ? loaded : selected)">
-      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-    </ng-container>
+  <div class="e-ui-accordion-content">
+    <!-- <ng-content></ng-content> -->
+    <div class="p-grid">
+      <div class="p-col-2">
+        <p-listbox *ngIf="attachmentList.length > 0" [options]="attachmentList" (onClick)="onAttachmentSelect($event)"></p-listbox>
+      </div>
+      <div class="p-col" *ngIf="selectedAttachment">
+        <p-fileUpload [showUploadButton]="false" chooseLabel="{{'Choose ' + selectedAttachment?.label}}"></p-fileUpload>
+      </div>
+    </div>
   </div>
 </div>

@@ -7,6 +7,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 
 import { BlockableUI } from 'primeng/api';
 import { Subscription } from 'rxjs';
+import { PrimeNgModule } from '../prime-ng.module';
 
 let idx = 0;
 
@@ -52,6 +53,7 @@ export class EAccordionTabComponent implements OnDestroy {
   @Input() header: string;
   @Input() selected: boolean;
   @Input() disabled: boolean;
+  @Input() attachmentList: [{ label: string, value: {} }];
   @Input() cache = true;
   @Output() selectedChange: EventEmitter<any> = new EventEmitter();
   @Input() transitionOptions = '400ms cubic-bezier(0.86, 0, 0.07, 1)';
@@ -66,6 +68,8 @@ export class EAccordionTabComponent implements OnDestroy {
   tabIndex = idx;
   loaded: boolean;
   accordion: EAccordionComponent;
+
+  selectedAttachment: any;
 
   get animating(): boolean {
     return this._animating;
@@ -129,6 +133,10 @@ export class EAccordionTabComponent implements OnDestroy {
 
   onToggleDone(event: Event) {
     this.animating = false;
+  }
+
+  onAttachmentSelect(event: any) {
+    this.selectedAttachment = event.option;
   }
 
   ngOnDestroy() {
@@ -223,7 +231,7 @@ export class EAccordionComponent implements BlockableUI, AfterContentInit, OnDes
  * Bundle all the components together
  */
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, PrimeNgModule],
   exports: [EAccordionComponent, EAccordionTabComponent, EHeaderComponent],
   declarations: [EAccordionComponent, EAccordionTabComponent, EHeaderComponent]
 })

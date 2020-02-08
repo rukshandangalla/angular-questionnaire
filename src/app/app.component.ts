@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   isSelected = false;
-  questionList: { id: number, question_text: string, attachmentList: {}[] }[] = [];
+  questionList: {
+    id: number,
+    question_text: string,
+    attachmentList: {}[]
+  }[] = [];
 
   ngOnInit() {
     // this.questionList = [
@@ -39,6 +43,13 @@ export class AppComponent implements OnInit {
       {
         id: 2,
         question_text: 'Is current mailing address supported by the identity proof?',
+        attachmentList: [
+          { label: 'Mandate', value: 1 }
+        ]
+      },
+      {
+        id: 3,
+        question_text: 'Form 40 or Form 1 ?',
         attachmentList: [
           { label: 'Mandate', value: 1 }
         ]

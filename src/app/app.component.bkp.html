@@ -1,0 +1,131 @@
+<!-- <div class="ui-g">
+  <div class="ui-g-12">
+    <p-accordion>
+      <p-accordionTab>
+        <p-header>
+          Does the FD level documents captured* ?
+        </p-header>
+        <div class="ui-g">
+          <div class="ui-g-4">
+            <p-inputSwitch></p-inputSwitch>
+          </div>
+          <div class="ui-g-8">
+            <p-radioButton name="groupname" value="val1" label="Yes"></p-radioButton>
+            <p-radioButton name="groupname" value="val2" label="No"></p-radioButton>
+          </div>
+        </div>
+      </p-accordionTab>
+      <p-accordionTab>
+        <p-header>
+          Is current mailing address supported by the identity proof?
+        </p-header>
+        Content 2
+      </p-accordionTab>
+      <p-accordionTab>
+        <p-header>
+          Is place of incorporation outside Sri Lanka and principal place of business in SL?
+        </p-header>
+        Content 3
+      </p-accordionTab>
+    </p-accordion>
+  </div>
+</div> -->
+
+<!-- <div class="ui-g">
+  <div class="ui-g-12">
+    <e-accordion>
+      <e-accordionTab>
+        <e-header>
+          Does the FD level documents captured* ?
+        </e-header>
+        <div class="ui-g">
+          <div class="ui-g-1">
+            <div class="ui-g">
+              <div class="ui-g-6">
+                <p-radioButton name="fd_docs" value="val1" label="Yes"></p-radioButton>
+              </div>
+              <div class="ui-g-6">
+                <p-radioButton name="fd_docs" value="val2" label="No"></p-radioButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </e-accordionTab>
+      <e-accordionTab>
+        <e-header>
+          <div class="p-grid p-nogutter">
+            <div class="p-col-9 p-nogutter">Is current mailing address supported by the identity proof?</div>
+            <div class="p-col p-nogutter">
+              <div class="p-grid p-nogutter">
+                <div class="p-col-6 p-nogutter">
+                  <p-radioButton name="id_proof" value="val1" label="Yes"></p-radioButton>
+                </div>
+                <div class="p-col-6 p-nogutter">
+                  <p-radioButton name="id_proof" value="val2" label="No"></p-radioButton>
+                </div>
+              </div>
+            </div>
+            <div class="p-col-fixed p-nogutter p-justify-end" style="width:30px">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </e-header>
+      </e-accordionTab>
+      <e-accordionTab>
+        <e-header>
+          <div class="p-grid p-nogutter">
+            <div class="p-col-9 p-nogutter">Is place of incorporation outside Sri Lanka and principal place of business
+              in SL?</div>
+            <div class="p-col p-nogutter">
+              <div class="p-grid p-nogutter">
+                <div class="p-col-6 p-nogutter">
+                  <p-radioButton name="groupname" value="val1" label="Yes"></p-radioButton>
+                </div>
+                <div class="p-col-6 p-nogutter">
+                  <p-radioButton name="groupname" value="val2" label="No"></p-radioButton>
+                </div>
+              </div>
+            </div>
+            <div class="p-col-fixed p-nogutter p-justify-end" style="width:30px">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </e-header>
+        23
+      </e-accordionTab>
+    </e-accordion>
+  </div>
+</div> -->
+
+<div class="ui-g">
+  <div class="ui-g-12">
+    <e-accordion>
+      <e-accordionTab *ngFor="let question of questionList" [attachmentList]="question.attachmentList">
+        <e-header>
+          <div class="p-grid p-nogutter">
+            <div class="p-col-9 p-nogutter">{{ question.question_text }}</div>
+            <div class="p-col p-nogutter">
+              <div class="p-grid p-nogutter">
+                <div class="p-col-6 p-nogutter">
+                  <p-radioButton [name]="'q_group_'+question.id" value="val1" label="Yes"></p-radioButton>
+                </div>
+                <div class="p-col-6 p-nogutter">
+                  <p-radioButton [name]="'q_group_'+question.id" value="val2" label="No"></p-radioButton>
+                </div>
+              </div>
+            </div>
+            <div class="p-col-fixed p-nogutter p-justify-end" style="width:30px">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </e-header>
+        <!-- <div class="p-grid">
+          <div class="p-col">
+            <p-fileUpload name="myfile[]" url="./upload.php"></p-fileUpload>
+          </div>
+          <div class="p-col"></div>
+        </div> -->
+      </e-accordionTab>
+    </e-accordion>
+  </div>
+</div>

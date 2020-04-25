@@ -32,6 +32,13 @@ export class AppComponent implements OnInit {
           { label: 'Power Of Atony', value: 1 },
           { label: 'Other', value: 2 }
         ]
+      },
+      {
+        id: 3,
+        question_text: 'Form 40 or Form 1 ?',
+        attachmentList: [
+          { label: 'Mandate', value: 1 }
+        ]
       }
     ];
   }

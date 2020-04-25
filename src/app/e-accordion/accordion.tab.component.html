@@ -25,12 +25,28 @@
   role="region" [attr.aria-hidden]="!selected" [attr.aria-labelledby]="id">
   <div class="e-ui-accordion-content">
     <!-- <ng-content></ng-content> -->
-    <div class="p-grid">
-      <div class="p-col-2">
-        <p-listbox *ngIf="attachmentList.length > 0" [options]="attachmentList" (onClick)="onAttachmentSelect($event)"></p-listbox>
+    <div >
+      <div class="p-grid">
+        <div class="p-col-2">
+          <p-listbox *ngIf="attachmentList.length > 0" [options]="attachmentList"
+            (onClick)="onAttachmentSelect($event)">
+          </p-listbox>
+        </div>
+        <div class="p-col" *ngIf="selectedAttachment">
+          <p-fileUpload [showUploadButton]="false" chooseLabel="{{'Choose ' + selectedAttachment?.label}}">
+          </p-fileUpload>
+        </div>
       </div>
-      <div class="p-col" *ngIf="selectedAttachment">
-        <p-fileUpload [showUploadButton]="false" chooseLabel="{{'Choose ' + selectedAttachment?.label}}"></p-fileUpload>
+      <div class="p-grid">
+        <div class="p-col">
+          <textarea pInputTextarea [rows]="5" [cols]="30"></textarea>
+        </div>
+      </div>
+      <div class="p-grid">
+        <div class="p-col">
+          <p-dropdown [options]="[{name:'Option 1'}, {name:'Option 2'}, {name:'Option 3'}, {name:'Option 4'}]"
+            optionLabel="name"></p-dropdown>
+        </div>
       </div>
     </div>
   </div>

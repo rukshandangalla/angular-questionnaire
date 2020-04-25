@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
       },
       {
         id: 3,
-        question_text: 'Form 40 or Form 1 ?',
+        questionText: 'Form 40 or Form 1 ?',
         attachmentList: [
           { label: 'Mandate', value: 1 }
         ]

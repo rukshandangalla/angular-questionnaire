@@ -1,4 +1,4 @@
-import { QSessionQuestionVM } from './questionnaire.session.question.vm';
+import { QuestionnaireSessionQuestionVM } from './questionnaire.session.question.vm';
 
 export interface QuestionnaireSessionVM {
   id?: number;
@@ -7,5 +7,5 @@ export interface QuestionnaireSessionVM {
   questionnaireOperationId?: number;
   QuestionCount?: number;
   remarks?: string;
-  sessionQuestionVMs?: QSessionQuestionVM[];
+  sessionQuestionVMs?: QuestionnaireSessionQuestionVM[];
 }
